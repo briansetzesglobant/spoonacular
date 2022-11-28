@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:spoonacular/src/core/util/routes_constants.dart';
-import 'package:spoonacular/src/core/util/strings_constants.dart';
 import 'package:spoonacular/src/presentation/view/home_page.dart';
 import 'package:spoonacular/src/presentation/view/splash_screen.dart';
 
 class AppRoutes {
+  static const String appRouteDefault = 'Undefined route';
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesConstants.splashScreenRoute:
@@ -20,7 +21,7 @@ class AppRoutes {
           builder: (_) => const Scaffold(
             body: Center(
               child: Text(
-                StringsConstants.appRouteDefault,
+                appRouteDefault,
               ),
             ),
           ),

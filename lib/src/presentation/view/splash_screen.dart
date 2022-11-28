@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:spoonacular/src/core/util/numbers_constants.dart';
+import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/routes_constants.dart';
-import 'package:spoonacular/src/core/util/strings_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen();
@@ -12,6 +11,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  static const double splashScreenGifHeight = 0.7;
+  static const double splashScreenGifWidth = 0.5;
+  static const int splashScreenDuration = 3000;
+
   @override
   void initState() {
     super.initState();
@@ -21,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _navigateToHome() async {
     await Future.delayed(
       const Duration(
-        milliseconds: NumbersConstants.splashScreenDuration,
+        milliseconds: splashScreenDuration,
       ),
       () {
         Navigator.of(context).pushReplacementNamed(
@@ -43,10 +46,12 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height *
-                      NumbersConstants.splashScreenGifHeight,
-                  width: MediaQuery.of(context).size.width *
-                      NumbersConstants.splashScreenGifWidth,
-                  child: Lottie.asset(StringsConstants.splashScreenGif),
+                      splashScreenGifHeight,
+                  width:
+                      MediaQuery.of(context).size.width * splashScreenGifWidth,
+                  child: Lottie.asset(
+                    AssetsConstants.lottiePrepareFood,
+                  ),
                 ),
               ],
             ),

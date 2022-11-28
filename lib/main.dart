@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 import 'package:spoonacular/src/config/route/app_routes.dart';
+import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/routes_constants.dart';
+import 'package:spoonacular/src/di.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: AssetsConstants.envFileRoot);
+  final Di di = Di();
+  di.injectDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -11,10 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: RoutesConstants.splashScreenRoute,
       onGenerateRoute: AppRoutes.generateRoute,

@@ -11,9 +11,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  static const double splashScreenGifHeight = 0.7;
-  static const double splashScreenGifWidth = 0.5;
-  static const int splashScreenDuration = 3000;
+  static const double gifHeight = 0.7;
+  static const double gifWidth = 0.5;
+  static const int duration = 3000;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _navigateToHome() async {
     await Future.delayed(
       const Duration(
-        milliseconds: splashScreenDuration,
+        milliseconds: duration,
       ),
       () {
         Navigator.of(context).pushReplacementNamed(
@@ -46,9 +46,9 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height *
-                      splashScreenGifHeight,
+                      gifHeight,
                   width:
-                      MediaQuery.of(context).size.width * splashScreenGifWidth,
+                      MediaQuery.of(context).size.width * gifWidth,
                   child: Lottie.asset(
                     AssetsConstants.lottiePrepareFood,
                   ),

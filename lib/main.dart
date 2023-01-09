@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:spoonacular/src/config/route/app_routes.dart';
 import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/routes_constants.dart';
@@ -11,6 +12,7 @@ void main() async {
   final Di di = Di();
   di.injectDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

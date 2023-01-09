@@ -2,20 +2,22 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/numbers_constants.dart';
+import 'package:spoonacular/src/core/util/routes_constants.dart';
 import 'package:spoonacular/src/core/util/strings_constants.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar();
 
-  static const String homeAppBarTextSpoonacular = 'Spoonacular';
-  static const String homeAppBarTextRecipeSearchIcon = 'SEARCH RECIPES';
-  static const double homeAppBarStyleSizeBig = 50.0;
-  static const double homeAppBarImageRecipeSearchIconSize = 70.0;
-  static const double homeAppBarPreferredSize = 130.0;
+  static const String textSpoonacular = 'Spoonacular';
+  static const String textFavorites = 'Favorites recipes';
+  static const String textRecipeSearchIcon = 'SEARCH RECIPES';
+  static const double styleSize = 50.0;
+  static const double imageSize = 70.0;
+  static const double preferredSizeHeight = 130.0;
 
   @override
   Size get preferredSize => const Size.fromHeight(
-        homeAppBarPreferredSize,
+        preferredSizeHeight,
       );
 
   @override
@@ -24,8 +26,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       color: Colors.teal,
       child: Padding(
         padding: const EdgeInsets.only(
-          left: NumbersConstants.paddingLeftBig,
-          right: NumbersConstants.paddingRightMedium,
+          left: NumbersConstants.paddingLeftXBig,
+          right: NumbersConstants.paddingRightXSmall,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,15 +40,60 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             const Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: NumbersConstants.paddingLeftBig,
+                  left: NumbersConstants.paddingLeftXBig,
                 ),
                 child: AutoSizeText(
-                  homeAppBarTextSpoonacular,
+                  textSpoonacular,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: homeAppBarStyleSizeBig,
+                    fontSize: styleSize,
                   ),
-                  maxLines: NumbersConstants.autoSizeTextMaxLines,
+                  maxLines: NumbersConstants.autoSizeTextMaxLinesFirst,
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed(
+                  RoutesConstants.favoritesRoute,
+                );
+              },
+              child: FittedBox(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: NumbersConstants.paddingTopXMedium,
+                    right: NumbersConstants.paddingRightXSmall,
+                    bottom: NumbersConstants.paddingBottomXMedium,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Image(
+                        image: AssetImage(
+                          AssetsConstants.imageFavorites,
+                        ),
+                        width: imageSize,
+                        height: imageSize,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: NumbersConstants.paddingTopSmall,
+                        ),
+                        child: ColoredBox(
+                          color: Colors.white,
+                          child: Text(
+                            'Favorites recipes',
+                            style: TextStyle(
+                              color: Colors.teal,
+                              fontSize: NumbersConstants.textStyleSize,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: StringsConstants.textFontFamily,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -57,9 +104,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   FittedBox(
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        top: NumbersConstants.paddingTopBig,
-                        right: NumbersConstants.paddingRightMedium,
-                        bottom: NumbersConstants.paddingBottomMedium,
+                        top: NumbersConstants.paddingTopXMedium,
+                        right: NumbersConstants.paddingRightXSmall,
+                        bottom: NumbersConstants.paddingBottomXMedium,
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,8 +115,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                             image: AssetImage(
                               AssetsConstants.imageRecipeSearchIcon,
                             ),
-                            width: homeAppBarImageRecipeSearchIconSize,
-                            height: homeAppBarImageRecipeSearchIconSize,
+                            width: imageSize,
+                            height: imageSize,
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -78,7 +125,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                             child: ColoredBox(
                               color: Colors.white,
                               child: Text(
-                                homeAppBarTextRecipeSearchIcon,
+                                textRecipeSearchIcon,
                                 style: TextStyle(
                                   color: Colors.teal,
                                   fontSize: NumbersConstants.textStyleSize,

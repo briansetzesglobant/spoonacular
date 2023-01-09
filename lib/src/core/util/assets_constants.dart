@@ -1,5 +1,8 @@
 class AssetsConstants {
   static const String imageClockIcon = 'assets/images/clock_icon.png';
+  static const String imageFavorites = 'assets/images/favorites.png';
+  static const String imageILikeIt = 'assets/images/i_like_it.png';
+  static const String imageLikeIcon = 'assets/images/like_icon.png';
   static const String imageNoRecipesFound =
       'assets/images/no_recipes_found.png';
   static const String imageRecipeSearchIcon =

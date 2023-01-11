@@ -7,11 +7,12 @@ import 'package:mockito/mockito.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:spoonacular/src/core/resource/data_state.dart';
 import 'package:spoonacular/src/data/model/recipes_list_model.dart';
+import 'package:spoonacular/src/domain/entity/recipes_list_entity.dart';
 import 'package:spoonacular/src/domain/use_case/implementation/recipes_use_case.dart';
 import 'package:spoonacular/src/presentation/controller/recipes_controller.dart';
 import 'package:spoonacular/src/presentation/view/home_page.dart';
 import 'package:spoonacular/src/presentation/widget/home_app_bar.dart';
-import '../utils/mock_data_test.dart';
+import '../../utils/mock_data.dart';
 import 'home_page_test.mocks.dart';
 
 @GenerateMocks([
@@ -20,21 +21,27 @@ import 'home_page_test.mocks.dart';
 void main() {
   late RecipesController recipesController;
   late RecipesUseCase recipesUseCase;
-  late DataState<RecipesListModel> dataStateSuccess;
-  late DataState<RecipesListModel> dataStateEmpty;
-  late DataState<RecipesListModel> dataStateFailed;
+  late DataState<RecipesListEntity> dataStateSuccess;
+  late DataState<RecipesListEntity> dataStateEmpty;
+  late DataState<RecipesListEntity> dataStateFailed;
+  late RecipesListModel recipesListModel;
 
   setUp(() {
     recipesUseCase = MockRecipesUseCase();
-    Get.replace(recipesUseCase);
-    recipesController = RecipesController();
+    recipesController = RecipesController(
+      recipesUseCase: recipesUseCase,
+    );
     Get.replace(recipesController);
-    final RecipesListModel recipesListModel = RecipesListModel.fromJson(
+    recipesListModel = RecipesListModel.fromJson(
       recipesListModelJsonSuccess,
     );
-    dataStateSuccess = DataSuccess(recipesListModel);
+    dataStateSuccess = DataSuccess(
+      recipesListModel,
+    );
     dataStateEmpty = const DataEmpty();
-    dataStateFailed = const DataFailed('error');
+    dataStateFailed = const DataFailed(
+      'error',
+    );
   });
 
   group('Home page test', () {

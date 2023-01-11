@@ -1,11 +1,11 @@
 class AssetsConstants {
-  static const String imageClockIcon = 'assets/images/clock_icon.png';
+  static const String imageClockIcon = 'assets/images/clock_icon.webp';
+  static const String imageFavorites = 'assets/images/favorites.webp';
   static const String imageNoRecipesFound =
-      'assets/images/no_recipes_found.png';
-  static const String imageRecipeSearchIcon =
-      'assets/images/recipe_search_icon.png';
-  static const String imageRefresh = 'assets/images/refresh.png';
-  static const String imageSpoonacular = 'assets/images/spoonacular.png';
+      'assets/images/no_recipes_found.webp';
+  static const String imageSearch = 'assets/images/search.webp';
+  static const String imageRefresh = 'assets/images/refresh.webp';
+  static const String imageSpoonacular = 'assets/images/spoonacular.webp';
   static const String lottieLoadingUtensils =
       'assets/lottie/loading_utensils.json';
   static const String lottieOopsErrorNew = 'assets/lottie/oops_error_new.json';

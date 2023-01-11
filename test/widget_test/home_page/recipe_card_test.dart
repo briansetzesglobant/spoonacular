@@ -1,14 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lottie/lottie.dart';
 import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
 import 'package:spoonacular/src/presentation/widget/recipe_card.dart';
 
 void main() {
-  late RecipeEntity recipeEntity;
+  late RecipeEntity recipe;
 
   setUp(() {
-    recipeEntity = RecipeEntity(
+    recipe = RecipeEntity(
       title: 'title',
       image: 'https://spoonacular.com/recipeImages/1043339-556x370.jpg',
       readyInMinutes: 45,
@@ -29,12 +29,12 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: RecipeCard(recipeEntity),
+          body: RecipeCard(recipe),
         ),
       ),
     );
     expect(find.text('"title"'), findsOneWidget);
-    expect(find.byType(LottieBuilder), findsOneWidget);
+    expect(find.byType(CachedNetworkImage), findsOneWidget);
     expect(find.text('45 min'), findsOneWidget);
     expect(find.text('summary'), findsOneWidget);
     expect(find.text('VEGETARIAN'), findsOneWidget);

@@ -8,23 +8,26 @@ import 'package:spoonacular/src/presentation/controller/recipes_controller.dart'
 
 class Di {
   void injectDependencies() {
-    Get.lazyPut(
-      () => RecipesController(),
-    );
-    Get.lazyPut(
-      () => RecipesUseCase(),
-    );
-    Get.lazyPut(
-      () => RecipesRepository(),
-    );
-    Get.lazyPut(
-      () => RecipesApiService(),
-    );
-    Get.lazyPut(
-      () => Dio(
+    Get.put(
+      Dio(
         BaseOptions(
           baseUrl: ApiServiceConstants.uri,
         ),
+      ),
+      permanent: true,
+    );
+
+    Get.put(
+      RecipesApiService(),
+      permanent: true,
+    );
+    Get.put(
+      RecipesRepository(),
+      permanent: true,
+    );
+    Get.lazyPut(
+      () => RecipesController(
+        recipesUseCase: RecipesUseCase(),
       ),
     );
   }

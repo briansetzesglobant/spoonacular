@@ -8,7 +8,7 @@ import 'package:spoonacular/src/data/model/recipes_list_model.dart';
 import 'package:spoonacular/src/data/repository/recipes_repository.dart';
 import 'package:spoonacular/src/domain/entity/recipes_list_entity.dart';
 import 'package:spoonacular/src/domain/use_case/implementation/recipes_use_case.dart';
-import '../utils/mock_data_test.dart';
+import '../../utils/mock_data.dart';
 import 'recipes_use_case_test.mocks.dart';
 
 @GenerateMocks([
@@ -20,17 +20,22 @@ void main() {
   late DataState<RecipesListModel> dataStateSuccess;
   late DataState<RecipesListModel> dataStateEmpty;
   late DataState<RecipesListModel> dataStateFailed;
+  late RecipesListModel recipesListModel;
 
   setUp(() {
     recipesRepository = MockRecipesRepository();
     Get.replace(recipesRepository);
     recipesUseCase = RecipesUseCase();
-    final RecipesListModel recipesListModel = RecipesListModel.fromJson(
+    recipesListModel = RecipesListModel.fromJson(
       recipesListModelJsonSuccess,
     );
-    dataStateSuccess = DataSuccess(recipesListModel);
+    dataStateSuccess = DataSuccess(
+      recipesListModel,
+    );
     dataStateEmpty = const DataEmpty();
-    dataStateFailed = const DataFailed('error');
+    dataStateFailed = const DataFailed(
+      'error',
+    );
   });
 
   group('Recipes use case test', () {

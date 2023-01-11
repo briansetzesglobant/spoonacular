@@ -5,10 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/numbers_constants.dart';
 import 'package:spoonacular/src/core/util/strings_constants.dart';
-import 'package:spoonacular/src/data/datasource/remote/recipes_api_service.dart';
-import 'package:spoonacular/src/data/repository/recipes_repository.dart';
 import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
-import 'package:spoonacular/src/domain/use_case/implementation/recipes_use_case.dart';
 import 'package:spoonacular/src/presentation/controller/recipes_controller.dart';
 import 'package:spoonacular/src/presentation/widget/home_app_bar.dart';
 import 'package:spoonacular/src/presentation/widget/recipe_card.dart';
@@ -21,14 +18,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const String homePageTextRefresh = 'SHOW MORE RECIPES';
-  static const String homePageTextNoRecipesFound = 'NO RECIPES FOUND';
-  static const double homePageContainerImageRefresh = 40.0;
-  static const int homePageFirstIndexCard = 0;
-  static const int homePageSecondIndexCard = 1;
-  static const int homePageThirdIndexCard = 2;
-  static const double homePageSizeBox = 30.0;
-  static const double homePageTextNoRecipesFoundStyleSize = 50.0;
+  static const String textRefresh = 'SHOW MORE RECIPES';
+  static const String textNoRecipesFound = 'NO RECIPES FOUND';
+  static const double textRefreshFontSize = 20.0;
+  static const double textNoRecipesFoundFontSize = 50.0;
+  static const double sizeBox = 30.0;
+  static const double containerImageRefresh = 40.0;
+  static const int firstIndexCard = 0;
+  static const int secondIndexCard = 1;
+  static const int thirdIndexCard = 2;
 
   final RecipesController controller = Get.find<RecipesController>();
 
@@ -42,14 +40,14 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: NumbersConstants.paddingBottomBig,
+          bottom: NumbersConstants.paddingBig,
         ),
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                left: NumbersConstants.paddingLeftBig,
-                top: NumbersConstants.paddingTopMedium,
+                left: NumbersConstants.paddingBig,
+                top: NumbersConstants.paddingXSmall,
               ),
               child: Row(
                 children: [
@@ -60,8 +58,8 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         Container(
-                          height: homePageContainerImageRefresh,
-                          width: homePageContainerImageRefresh,
+                          height: containerImageRefresh,
+                          width: containerImageRefresh,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
@@ -73,13 +71,13 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
-                            left: NumbersConstants.paddingLeftSmall,
+                            left: NumbersConstants.paddingXXSmall,
                           ),
                           child: Text(
-                            homePageTextRefresh,
+                            textRefresh,
                             style: TextStyle(
-                              fontSize: NumbersConstants.textStyleSize,
-                              fontWeight: FontWeight.w900,
+                              fontSize: textRefreshFontSize,
+                              fontWeight: FontWeight.w700,
                               fontFamily: StringsConstants.textFontFamily,
                             ),
                           ),
@@ -92,31 +90,31 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                left: NumbersConstants.paddingLeftBig,
-                top: NumbersConstants.paddingTopMedium,
-                right: NumbersConstants.paddingRightBig,
+                left: NumbersConstants.paddingBig,
+                top: NumbersConstants.paddingXSmall,
+                right: NumbersConstants.paddingBig,
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: RecipeCard(
-                      state[homePageFirstIndexCard],
+                      state[firstIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: homePageSizeBox,
+                    width: sizeBox,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[homePageSecondIndexCard],
+                      state[secondIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: homePageSizeBox,
+                    width: sizeBox,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[homePageThirdIndexCard],
+                      state[thirdIndexCard],
                     ),
                   ),
                 ],
@@ -163,12 +161,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: NumbersConstants.paddingTopMedium,
+                    top: NumbersConstants.paddingXSmall,
                   ),
                   child: AutoSizeText(
-                    homePageTextNoRecipesFound,
+                    textNoRecipesFound,
                     style: TextStyle(
-                      fontSize: homePageTextNoRecipesFoundStyleSize,
+                      fontSize: textNoRecipesFoundFontSize,
                       fontFamily: StringsConstants.textFontFamily,
                     ),
                     maxLines: NumbersConstants.autoSizeTextMaxLines,

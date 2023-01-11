@@ -7,97 +7,162 @@ import 'package:spoonacular/src/core/util/strings_constants.dart';
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar();
 
-  static const String homeAppBarTextSpoonacular = 'Spoonacular';
-  static const String homeAppBarTextRecipeSearchIcon = 'SEARCH RECIPES';
-  static const double homeAppBarStyleSizeBig = 50.0;
-  static const double homeAppBarImageRecipeSearchIconSize = 70.0;
-  static const double homeAppBarPreferredSize = 130.0;
+  static const String textSpoonacular = 'Spoonacular';
+  static const String textFavorites = 'FAVORITE RECIPES';
+  static const String textSearch = 'SEARCH RECIPES';
+  static const double imageSize = 65.0;
+  static const double styleSize = 40.0;
+  static const double textFavoritesFontSizeFirst = 20.0;
+  static const double textFavoritesFontSizeSecond = 13.0;
+  static const double textFavoritesFontSizeThird = 9.0;
+  static const double constraintsMaxWidthFirst = 900.0;
+  static const double constraintsMaxWidthSecond = 650.0;
+  static const double preferredSizeHeight = 135.0;
 
   @override
   Size get preferredSize => const Size.fromHeight(
-        homeAppBarPreferredSize,
+        preferredSizeHeight,
       );
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.teal,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          left: NumbersConstants.paddingLeftBig,
-          right: NumbersConstants.paddingRightMedium,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Image(
-              image: AssetImage(
-                AssetsConstants.imageSpoonacular,
-              ),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return ColoredBox(
+          color: Colors.teal,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: NumbersConstants.paddingBig,
+              right: NumbersConstants.paddingXXSmall,
             ),
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: NumbersConstants.paddingLeftBig,
-                ),
-                child: AutoSizeText(
-                  homeAppBarTextSpoonacular,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: homeAppBarStyleSizeBig,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(
+                  image: AssetImage(
+                    AssetsConstants.imageSpoonacular,
                   ),
-                  maxLines: NumbersConstants.autoSizeTextMaxLines,
                 ),
-              ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FittedBox(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: NumbersConstants.paddingTopBig,
-                        right: NumbersConstants.paddingRightMedium,
-                        bottom: NumbersConstants.paddingBottomMedium,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: NumbersConstants.paddingBig,
+                    ),
+                    child: AutoSizeText(
+                      textSpoonacular.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: styleSize,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: StringsConstants.textFontFamily,
+                        decoration: TextDecoration.underline,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Image(
-                            image: AssetImage(
-                              AssetsConstants.imageRecipeSearchIcon,
-                            ),
-                            width: homeAppBarImageRecipeSearchIconSize,
-                            height: homeAppBarImageRecipeSearchIconSize,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: NumbersConstants.paddingTopSmall,
-                            ),
-                            child: ColoredBox(
-                              color: Colors.white,
-                              child: Text(
-                                homeAppBarTextRecipeSearchIcon,
-                                style: TextStyle(
-                                  color: Colors.teal,
-                                  fontSize: NumbersConstants.textStyleSize,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: StringsConstants.textFontFamily,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      maxLines: NumbersConstants.autoSizeTextMaxLines,
                     ),
                   ),
-                ],
-              ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: FittedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: NumbersConstants.paddingXXSmall,
+                              vertical: NumbersConstants.paddingMedium,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Image(
+                                  image: AssetImage(
+                                    AssetsConstants.imageFavorites,
+                                  ),
+                                  width: imageSize,
+                                  height: imageSize,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: NumbersConstants.paddingSmall,
+                                  ),
+                                  child: Text(
+                                    textFavorites,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: constraints.maxWidth >
+                                              constraintsMaxWidthFirst
+                                          ? textFavoritesFontSizeFirst
+                                          : (constraints.maxWidth >
+                                                  constraintsMaxWidthSecond
+                                              ? textFavoritesFontSizeSecond
+                                              : textFavoritesFontSizeThird),
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily:
+                                          StringsConstants.textFontFamily,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: FittedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: NumbersConstants.paddingXXSmall,
+                              top: NumbersConstants.paddingMedium,
+                              right: NumbersConstants.paddingXXSmall,
+                              bottom: NumbersConstants.paddingMedium,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Image(
+                                  image: AssetImage(
+                                    AssetsConstants.imageSearch,
+                                  ),
+                                  width: imageSize,
+                                  height: imageSize,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: NumbersConstants.paddingSmall,
+                                  ),
+                                  child: Text(
+                                    textSearch,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: constraints.maxWidth >
+                                              constraintsMaxWidthFirst
+                                          ? textFavoritesFontSizeFirst
+                                          : (constraints.maxWidth >
+                                                  constraintsMaxWidthSecond
+                                              ? textFavoritesFontSizeSecond
+                                              : textFavoritesFontSizeThird),
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily:
+                                          StringsConstants.textFontFamily,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

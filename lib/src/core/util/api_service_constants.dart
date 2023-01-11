@@ -5,7 +5,7 @@ abstract class ApiServiceConstants {
   static const String apiKeyParameter = 'apiKey';
   static const String endpointRecipesRandom = 'random';
   static const String numberParameter = 'number';
-  static const int numberParameterValue = 3;
+  static const int numberParameterValue = 5;
   static const String textDataFailed =
       'An error has occurred while loading recipes random';
 }

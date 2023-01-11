@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' as dio;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
@@ -6,27 +7,30 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:spoonacular/src/data/datasource/remote/recipes_api_service.dart';
 import 'package:spoonacular/src/data/model/recipes_list_model.dart';
-import '../utils/mock_data_test.dart';
+import '../utils/mock_data.dart';
 import 'recipes_api_service_test.mocks.dart';
 
 @GenerateMocks([
   dio.Dio,
 ])
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   late RecipesApiService recipesApiService;
   late dio.Dio dioApiService;
-  late Map<String, dynamic> dataSuccess;
-  late Map<String, dynamic> dataEmpty;
-  late Map<String, dynamic> dataFailed;
+  late Map<String, dynamic> headers;
 
-  setUp(() {
+  void getEnv() async {
+    await dotenv.load(fileName: 'assets/env/.env');
     dioApiService = MockDio();
     Get.replace(dioApiService);
     recipesApiService = RecipesApiService();
-    recipesApiService.dioApiService = dioApiService;
-    dataSuccess = recipesListModelJsonSuccess;
-    dataEmpty = recipesListModelJsonEmpty;
-    dataFailed = recipesListModelJsonFailed;
+    headers = {
+      'x-api-key': dotenv.env['API_KEY'],
+    };
+  }
+
+  setUp(() {
+    getEnv();
   });
 
   group('Recipes repository test', () {
@@ -35,11 +39,16 @@ void main() {
       () async {
         when(
           dioApiService.get(
-            'https://api.spoonacular.com/recipes/random?apiKey=6add5cb5264c4077a6540c34ca241c8b&number=3',
+            //'https://api.spoonacular.com/recipes/random?apiKey=6add5cb5264c4077a6540c34ca241c8b&number=3',
+            'random',
+            queryParameters: {
+              'apiKey': headers['x-api-key'],
+              'number': 3,
+            },
           ),
         ).thenAnswer(
           (_) async => dio.Response(
-            data: dataSuccess,
+            data: recipesListModelJsonSuccess,
             requestOptions: dio.RequestOptions(
               path:
                   'https://api.spoonacular.com/recipes/random?apiKey=6add5cb5264c4077a6540c34ca241c8b&number=3',
@@ -55,7 +64,9 @@ void main() {
         ).called(1);
         expect(
           response.data,
-          RecipesListModel.fromJson(dataSuccess),
+          RecipesListModel.fromJson(
+            recipesListModelJsonSuccess,
+          ),
         );
         expect(
           response.error,
@@ -73,7 +84,7 @@ void main() {
           ),
         ).thenAnswer(
           (_) async => dio.Response(
-            data: dataEmpty,
+            data: recipesListModelJsonEmpty,
             requestOptions: dio.RequestOptions(
               path:
                   'https://api.spoonacular.com/recipes/random?apiKey=6add5cb5264c4077a6540c34ca241c8b&number=3',
@@ -107,7 +118,7 @@ void main() {
           ),
         ).thenAnswer(
           (_) async => dio.Response(
-            data: dataFailed,
+            data: errorModelJsonFailed,
             requestOptions: dio.RequestOptions(
               path:
                   'https://api.spoonacular.com/recipes/random?apiKey=6add5cb5264c4077a6540c34ca241c8b&number=3',

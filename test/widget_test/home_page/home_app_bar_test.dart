@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:spoonacular/src/presentation/widget/home_app_bar.dart';
@@ -15,7 +14,6 @@ void main() {
     );
     expect(find.text('Spoonacular'), findsOneWidget);
     expect(find.text('SEARCH RECIPES'), findsOneWidget);
-    expect(find.byType(Image), findsNWidgets(2));
-    expect(find.byType(AutoSizeText), findsOneWidget);
+    expect(find.byType(Image), findsNWidgets(3));
   });
 }

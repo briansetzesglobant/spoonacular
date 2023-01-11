@@ -3,11 +3,14 @@ import 'package:spoonacular/src/core/resource/data_state.dart';
 import 'package:spoonacular/src/core/use_case/use_case_interface.dart';
 import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
 import 'package:spoonacular/src/domain/entity/recipes_list_entity.dart';
-import 'package:spoonacular/src/domain/use_case/implementation/recipes_use_case.dart';
 
 class RecipesController extends GetxController
     with StateMixin<List<RecipeEntity>> {
-  final UseCaseInterface recipesUseCase = Get.find<RecipesUseCase>();
+  RecipesController({
+    required this.recipesUseCase,
+  });
+
+  UseCaseInterface recipesUseCase;
 
   void getRecipesRandom() async {
     change(

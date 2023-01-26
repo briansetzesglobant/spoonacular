@@ -33,7 +33,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Padding(
             padding: const EdgeInsets.only(
               left: NumbersConstants.paddingBig,
-              right: NumbersConstants.paddingXXSmall,
+              right: NumbersConstants.paddingXXXSmall,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +57,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         fontFamily: StringsConstants.textFontFamily,
                         decoration: TextDecoration.underline,
                       ),
-                      maxLines: NumbersConstants.autoSizeTextMaxLines,
+                      maxLines: NumbersConstants.autoSizeTextMaxLinesFirst,
                     ),
                   ),
                 ),
@@ -69,9 +69,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         onTap: () {},
                         child: FittedBox(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: NumbersConstants.paddingXXSmall,
-                              vertical: NumbersConstants.paddingMedium,
+                            padding: const EdgeInsets.only(
+                              left: NumbersConstants.paddingXXXSmall,
+                              top: NumbersConstants.paddingXMedium,
+                              right: NumbersConstants.paddingXXXSmall,
+                              bottom: NumbersConstants.paddingXMedium,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -114,10 +116,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         child: FittedBox(
                           child: Padding(
                             padding: const EdgeInsets.only(
-                              left: NumbersConstants.paddingXXSmall,
-                              top: NumbersConstants.paddingMedium,
-                              right: NumbersConstants.paddingXXSmall,
-                              bottom: NumbersConstants.paddingMedium,
+                              left: NumbersConstants.paddingXXXSmall,
+                              top: NumbersConstants.paddingXMedium,
+                              right: NumbersConstants.paddingXXXSmall,
+                              bottom: NumbersConstants.paddingXMedium,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

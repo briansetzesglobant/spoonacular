@@ -21,6 +21,9 @@ _$_RecipeModel _$$_RecipeModelFromJson(Map<String, dynamic> json) =>
       veryPopular: json['veryPopular'] as bool,
       sustainable: json['sustainable'] as bool,
       lowFodmap: json['lowFodmap'] as bool,
+      id: json['id'] as int,
+      aggregateLikes: json['aggregateLikes'] as int,
+      instructions: json['instructions'] as String,
     );
 
 Map<String, dynamic> _$$_RecipeModelToJson(_$_RecipeModel instance) =>
@@ -38,4 +41,7 @@ Map<String, dynamic> _$$_RecipeModelToJson(_$_RecipeModel instance) =>
       'veryPopular': instance.veryPopular,
       'sustainable': instance.sustainable,
       'lowFodmap': instance.lowFodmap,
+      'id': instance.id,
+      'aggregateLikes': instance.aggregateLikes,
+      'instructions': instance.instructions,
     };

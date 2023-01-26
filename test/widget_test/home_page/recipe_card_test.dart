@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipe_entity.dart';
 import 'package:spoonacular/src/presentation/widget/recipe_card.dart';
 
 void main() {
@@ -22,6 +22,9 @@ void main() {
       veryPopular: false,
       sustainable: false,
       lowFodmap: false,
+      id: 000000,
+      aggregateLikes: 1460,
+      instructions: 'instructions',
     );
   });
   testWidgets('RecipeCard() should display the recipe card',
@@ -29,7 +32,9 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: RecipeCard(recipe),
+          body: RecipeCard(
+            recipe: recipe,
+          ),
         ),
       ),
     );

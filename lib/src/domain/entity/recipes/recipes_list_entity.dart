@@ -1,4 +1,4 @@
-import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipe_entity.dart';
 
 class RecipesListEntity {
   RecipesListEntity({

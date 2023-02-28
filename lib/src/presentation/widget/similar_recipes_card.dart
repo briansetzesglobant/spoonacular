@@ -30,6 +30,8 @@ class _SimilarRecipesCardState extends State<SimilarRecipesCard> {
   static const double sizeBoxWidthImageUrl = 300.0;
   static const double sizeBoxHeightImageUrl = 200.0;
   static const double sizedBoxHeightListView = 700.0;
+  static String imageUrl =
+      '${ApiServiceConstants.urlBaseImageSimilarRecipes}${ApiServiceConstants.recipeIndex}${ApiServiceConstants.resolutionImageSimilarRecipes}.${ApiServiceConstants.imageType}';
 
   final RecipeIdController controller = Get.find<RecipeIdController>();
 
@@ -48,11 +50,9 @@ class _SimilarRecipesCardState extends State<SimilarRecipesCard> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: NumbersConstants.paddingXXXSmall,
-          top: NumbersConstants.paddingXXXSmall,
-          right: NumbersConstants.paddingXXXSmall,
-          bottom: NumbersConstants.paddingMedium,
+        padding: const EdgeInsets.symmetric(
+          vertical: NumbersConstants.paddingMedium,
+          horizontal: NumbersConstants.paddingXXXSmall,
         ),
         child: Column(
           children: [
@@ -76,7 +76,10 @@ class _SimilarRecipesCardState extends State<SimilarRecipesCard> {
               height: sizedBoxHeightListView,
               child: ListView.builder(
                 itemCount: widget.similarRecipes.length,
-                itemBuilder: (context, index) {
+                itemBuilder: (
+                  context,
+                  index,
+                ) {
                   return Column(
                     children: [
                       Padding(
@@ -104,9 +107,19 @@ class _SimilarRecipesCardState extends State<SimilarRecipesCard> {
                             width: sizeBoxWidthImageUrl,
                             height: sizeBoxHeightImageUrl,
                             child: CachedNetworkImage(
-                              imageUrl:
-                                  '${ApiServiceConstants.urlBaseImageSimilarRecipes}${widget.similarRecipes[index].id}${ApiServiceConstants.resolutionImageSimilarRecipes}.${widget.similarRecipes[index].imageType}',
-                              imageBuilder: (context, imageProvider) =>
+                              imageUrl: imageUrl
+                                  .replaceAll(
+                                    ApiServiceConstants.recipeIndex,
+                                    '${widget.similarRecipes[index].id}',
+                                  )
+                                  .replaceAll(
+                                    ApiServiceConstants.imageType,
+                                    widget.similarRecipes[index].imageType,
+                                  ),
+                              imageBuilder: (
+                                context,
+                                imageProvider,
+                              ) =>
                                   DecoratedBox(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(

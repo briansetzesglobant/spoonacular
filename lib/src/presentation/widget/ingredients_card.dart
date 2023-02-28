@@ -55,11 +55,9 @@ class IngredientsCard extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  left: NumbersConstants.paddingXXXSmall,
-                  top: NumbersConstants.paddingMedium,
-                  right: NumbersConstants.paddingXXXSmall,
-                  bottom: NumbersConstants.paddingMedium,
+                padding: const EdgeInsets.symmetric(
+                  vertical: NumbersConstants.paddingMedium,
+                  horizontal: NumbersConstants.paddingXXXSmall,
                 ),
                 child: SizedBox(
                   height: containerHeightGridView,
@@ -69,7 +67,10 @@ class IngredientsCard extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: gridViewCrossAxisCount,
                     ),
-                    itemBuilder: (BuildContext context, int index) {
+                    itemBuilder: (
+                      BuildContext context,
+                      int index,
+                    ) {
                       return Column(
                         children: [
                           Padding(

@@ -14,6 +14,8 @@ abstract class ApiServiceConstants {
   static const String urlBaseImageSimilarRecipes =
       'https://spoonacular.com/recipeImages/';
   static const String resolutionImageSimilarRecipes = '-556x370';
+  static const String recipeIndex = '<recipeIndex>';
+  static const String imageType = '<imageType>';
   static const String endpointRecipeIdInformation = 'information';
   static const String textDataFailed =
       'An error has occurred while loading recipes random';

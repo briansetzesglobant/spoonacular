@@ -31,7 +31,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  lottie: ^2.0.0
+  get: ^4.6.5
+  dio: ^4.0.6
+  freezed: ^2.2.1
+  flutter_html: ^2.2.1
+  freezed_annotation: 2.2.0
+  json_serializable: ^6.5.4
+  auto_size_text: ^3.0.0
+  cached_network_image: ^3.2.2
+  mockito: ^5.3.2
+  network_image_mock: ^2.1.1
+  flutter_dotenv: ^5.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -46,7 +57,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  lint: ^1.10.0
+  build_runner: ^2.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,7 +72,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/images/
+    - assets/lottie/
+    - assets/env/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -75,7 +90,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Black.ttf
+        - asset: assets/fonts/PlayfairDisplay-BlackItalic.ttf
+        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
+        - asset: assets/fonts/PlayfairDisplay-BoldItalic.ttf
+        - asset: assets/fonts/PlayfairDisplay-ExtraBold.ttf
+        - asset: assets/fonts/PlayfairDisplay-ExtraBoldItalic.ttf
+        - asset: assets/fonts/PlayfairDisplay-Italic.ttf
+        - asset: assets/fonts/PlayfairDisplay-Medium.ttf
+        - asset: assets/fonts/PlayfairDisplay-MediumItalic.ttf
+        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/PlayfairDisplay-SemiBold.ttf
+        - asset: assets/fonts/PlayfairDisplay-SemiBoldItalic.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

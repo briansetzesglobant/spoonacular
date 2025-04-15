@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipe_entity.dart';
 
 part 'recipe_model.freezed.dart';
 
@@ -21,6 +21,9 @@ class RecipeModel extends RecipeEntity with _$RecipeModel {
     required bool veryPopular,
     required bool sustainable,
     required bool lowFodmap,
+    required int id,
+    required int aggregateLikes,
+    required String instructions,
   }) = _RecipeModel;
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) =>

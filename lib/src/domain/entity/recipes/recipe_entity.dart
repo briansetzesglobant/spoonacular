@@ -13,6 +13,9 @@ class RecipeEntity {
     required this.veryPopular,
     required this.sustainable,
     required this.lowFodmap,
+    required this.id,
+    required this.aggregateLikes,
+    required this.instructions,
   });
 
   final String title;
@@ -28,4 +31,7 @@ class RecipeEntity {
   final bool veryPopular;
   final bool sustainable;
   final bool lowFodmap;
+  final int id;
+  final int aggregateLikes;
+  final String instructions;
 }

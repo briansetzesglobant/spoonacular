@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/numbers_constants.dart';
 import 'package:spoonacular/src/core/util/strings_constants.dart';
-import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipe_entity.dart';
 import 'package:spoonacular/src/presentation/controller/recipes_controller.dart';
 import 'package:spoonacular/src/presentation/widget/home_app_bar.dart';
 import 'package:spoonacular/src/presentation/widget/recipe_card.dart';
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   static const String textNoRecipesFound = 'NO RECIPES FOUND';
   static const double textRefreshFontSize = 20.0;
   static const double textNoRecipesFoundFontSize = 50.0;
-  static const double sizeBox = 30.0;
+  static const double sizeBoxWidth = 30.0;
   static const double containerImageRefresh = 40.0;
   static const int firstIndexCard = 0;
   static const int secondIndexCard = 1;
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(
                 left: NumbersConstants.paddingBig,
-                top: NumbersConstants.paddingXSmall,
+                top: NumbersConstants.paddingXXSmall,
               ),
               child: Row(
                 children: [
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
-                            left: NumbersConstants.paddingXXSmall,
+                            left: NumbersConstants.paddingXXXSmall,
                           ),
                           child: Text(
                             textRefresh,
@@ -93,46 +93,46 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(
                 left: NumbersConstants.paddingBig,
-                top: NumbersConstants.paddingXSmall,
+                top: NumbersConstants.paddingXXSmall,
                 right: NumbersConstants.paddingBig,
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: RecipeCard(
-                      state[firstIndexCard],
+                      recipe: state[firstIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: sizeBox,
+                    width: sizeBoxWidth,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[secondIndexCard],
+                      recipe: state[secondIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: sizeBox,
+                    width: sizeBoxWidth,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[thirdIndexCard],
+                      recipe: state[thirdIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: sizeBox,
+                    width: sizeBoxWidth,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[forthIndexCard],
+                      recipe: state[forthIndexCard],
                     ),
                   ),
                   const SizedBox(
-                    width: sizeBox,
+                    width: sizeBoxWidth,
                   ),
                   Expanded(
                     child: RecipeCard(
-                      state[fifthIndexCard],
+                      recipe: state[fifthIndexCard],
                     ),
                   ),
                 ],
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: NumbersConstants.paddingXSmall,
+                    top: NumbersConstants.paddingXXSmall,
                   ),
                   child: AutoSizeText(
                     textNoRecipesFound,
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                       fontSize: textNoRecipesFoundFontSize,
                       fontFamily: StringsConstants.textFontFamily,
                     ),
-                    maxLines: NumbersConstants.autoSizeTextMaxLines,
+                    maxLines: NumbersConstants.autoSizeTextMaxLinesFirst,
                   ),
                 ),
               ],

@@ -3,16 +3,17 @@ import 'package:spoonacular/src/core/resource/data_state.dart';
 import 'package:spoonacular/src/core/use_case/use_case_interface.dart';
 import 'package:spoonacular/src/core/util/numbers_constants.dart';
 import 'package:spoonacular/src/data/repository/recipes_repository.dart';
-import 'package:spoonacular/src/domain/entity/recipes/recipes_list_entity.dart';
+import 'package:spoonacular/src/domain/entity/similar_recipes/similar_recipes_entity.dart';
 import 'package:spoonacular/src/domain/repository/repository_interface.dart';
 
-class RecipesUseCase extends UseCaseInterface<DataState<RecipesListEntity>> {
-  RepositoryInterface recipesRepository = Get.find<RecipesRepository>();
+class SimilarRecipesUseCase
+    extends UseCaseInterface<DataState<List<SimilarRecipesEntity>>> {
+  RepositoryInterface similarRecipesRepository = Get.find<RecipesRepository>();
 
   @override
-  Future<DataState<RecipesListEntity>> call({
+  Future<DataState<List<SimilarRecipesEntity>>> call({
     int id = NumbersConstants.valueDefectMethodCall,
   }) {
-    return recipesRepository.getRecipesRandom();
+    return similarRecipesRepository.getSimilarRecipes(id: id);
   }
 }

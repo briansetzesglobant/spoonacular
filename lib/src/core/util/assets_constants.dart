@@ -1,6 +1,8 @@
 class AssetsConstants {
   static const String imageClockIcon = 'assets/images/clock_icon.webp';
   static const String imageFavorites = 'assets/images/favorites.webp';
+  static const String imageILikeIt = 'assets/images/i_like_it.webp';
+  static const String imageLikeIcon = 'assets/images/like_icon.webp';
   static const String imageNoRecipesFound =
       'assets/images/no_recipes_found.webp';
   static const String imageSearch = 'assets/images/search.webp';

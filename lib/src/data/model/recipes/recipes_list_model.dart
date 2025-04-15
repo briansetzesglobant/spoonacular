@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:spoonacular/src/data/model/recipe_model.dart';
-import 'package:spoonacular/src/domain/entity/recipes_list_entity.dart';
+import 'package:spoonacular/src/data/model/recipes/recipe_model.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipes_list_entity.dart';
 
 part 'recipes_list_model.freezed.dart';
 

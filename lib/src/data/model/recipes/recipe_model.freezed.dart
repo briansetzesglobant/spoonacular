@@ -33,6 +33,9 @@ mixin _$RecipeModel {
   bool get veryPopular => throw _privateConstructorUsedError;
   bool get sustainable => throw _privateConstructorUsedError;
   bool get lowFodmap => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  int get aggregateLikes => throw _privateConstructorUsedError;
+  String get instructions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +62,10 @@ abstract class $RecipeModelCopyWith<$Res> {
       bool cheap,
       bool veryPopular,
       bool sustainable,
-      bool lowFodmap});
+      bool lowFodmap,
+      int id,
+      int aggregateLikes,
+      String instructions});
 }
 
 /// @nodoc
@@ -88,6 +94,9 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
     Object? veryPopular = null,
     Object? sustainable = null,
     Object? lowFodmap = null,
+    Object? id = null,
+    Object? aggregateLikes = null,
+    Object? instructions = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -142,6 +151,18 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
           ? _value.lowFodmap
           : lowFodmap // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      aggregateLikes: null == aggregateLikes
+          ? _value.aggregateLikes
+          : aggregateLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      instructions: null == instructions
+          ? _value.instructions
+          : instructions // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -167,7 +188,10 @@ abstract class _$$_RecipeModelCopyWith<$Res>
       bool cheap,
       bool veryPopular,
       bool sustainable,
-      bool lowFodmap});
+      bool lowFodmap,
+      int id,
+      int aggregateLikes,
+      String instructions});
 }
 
 /// @nodoc
@@ -194,6 +218,9 @@ class __$$_RecipeModelCopyWithImpl<$Res>
     Object? veryPopular = null,
     Object? sustainable = null,
     Object? lowFodmap = null,
+    Object? id = null,
+    Object? aggregateLikes = null,
+    Object? instructions = null,
   }) {
     return _then(_$_RecipeModel(
       title: null == title
@@ -248,6 +275,18 @@ class __$$_RecipeModelCopyWithImpl<$Res>
           ? _value.lowFodmap
           : lowFodmap // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      aggregateLikes: null == aggregateLikes
+          ? _value.aggregateLikes
+          : aggregateLikes // ignore: cast_nullable_to_non_nullable
+              as int,
+      instructions: null == instructions
+          ? _value.instructions
+          : instructions // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -268,7 +307,10 @@ class _$_RecipeModel implements _RecipeModel {
       required this.cheap,
       required this.veryPopular,
       required this.sustainable,
-      required this.lowFodmap});
+      required this.lowFodmap,
+      required this.id,
+      required this.aggregateLikes,
+      required this.instructions});
 
   factory _$_RecipeModel.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeModelFromJson(json);
@@ -299,10 +341,16 @@ class _$_RecipeModel implements _RecipeModel {
   final bool sustainable;
   @override
   final bool lowFodmap;
+  @override
+  final int id;
+  @override
+  final int aggregateLikes;
+  @override
+  final String instructions;
 
   @override
   String toString() {
-    return 'RecipeModel(title: $title, image: $image, readyInMinutes: $readyInMinutes, summary: $summary, vegetarian: $vegetarian, vegan: $vegan, glutenFree: $glutenFree, dairyFree: $dairyFree, veryHealthy: $veryHealthy, cheap: $cheap, veryPopular: $veryPopular, sustainable: $sustainable, lowFodmap: $lowFodmap)';
+    return 'RecipeModel(title: $title, image: $image, readyInMinutes: $readyInMinutes, summary: $summary, vegetarian: $vegetarian, vegan: $vegan, glutenFree: $glutenFree, dairyFree: $dairyFree, veryHealthy: $veryHealthy, cheap: $cheap, veryPopular: $veryPopular, sustainable: $sustainable, lowFodmap: $lowFodmap, id: $id, aggregateLikes: $aggregateLikes, instructions: $instructions)';
   }
 
   @override
@@ -330,7 +378,12 @@ class _$_RecipeModel implements _RecipeModel {
             (identical(other.sustainable, sustainable) ||
                 other.sustainable == sustainable) &&
             (identical(other.lowFodmap, lowFodmap) ||
-                other.lowFodmap == lowFodmap));
+                other.lowFodmap == lowFodmap) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.aggregateLikes, aggregateLikes) ||
+                other.aggregateLikes == aggregateLikes) &&
+            (identical(other.instructions, instructions) ||
+                other.instructions == instructions));
   }
 
   @JsonKey(ignore: true)
@@ -349,7 +402,10 @@ class _$_RecipeModel implements _RecipeModel {
       cheap,
       veryPopular,
       sustainable,
-      lowFodmap);
+      lowFodmap,
+      id,
+      aggregateLikes,
+      instructions);
 
   @JsonKey(ignore: true)
   @override
@@ -379,7 +435,10 @@ abstract class _RecipeModel implements RecipeModel {
       required final bool cheap,
       required final bool veryPopular,
       required final bool sustainable,
-      required final bool lowFodmap}) = _$_RecipeModel;
+      required final bool lowFodmap,
+      required final int id,
+      required final int aggregateLikes,
+      required final String instructions}) = _$_RecipeModel;
 
   factory _RecipeModel.fromJson(Map<String, dynamic> json) =
       _$_RecipeModel.fromJson;
@@ -410,6 +469,12 @@ abstract class _RecipeModel implements RecipeModel {
   bool get sustainable;
   @override
   bool get lowFodmap;
+  @override
+  int get id;
+  @override
+  int get aggregateLikes;
+  @override
+  String get instructions;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeModelCopyWith<_$_RecipeModel> get copyWith =>

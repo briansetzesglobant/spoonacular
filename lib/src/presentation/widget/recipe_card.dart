@@ -2,13 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:lottie/lottie.dart';
+import 'package:spoonacular/src/core/parameter/parameter_object.dart';
 import 'package:spoonacular/src/core/util/assets_constants.dart';
 import 'package:spoonacular/src/core/util/numbers_constants.dart';
+import 'package:spoonacular/src/core/util/routes_constants.dart';
 import 'package:spoonacular/src/core/util/strings_constants.dart';
-import 'package:spoonacular/src/domain/entity/recipe_entity.dart';
+import 'package:spoonacular/src/domain/entity/recipes/recipe_entity.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard(this.recipe);
+  const RecipeCard({
+    required this.recipe,
+  });
 
   static const String textTitle = '"';
   static const String textReadyInMinutes = 'min';
@@ -92,7 +96,18 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushReplacementNamed(
+          RoutesConstants.detailRoute,
+          arguments: ParameterDetailPage(
+            id: recipe.id,
+            title: recipe.title,
+            aggregateLikes: recipe.aggregateLikes,
+            instructions: recipe.instructions,
+            image: recipe.image,
+          ),
+        );
+      },
       child: Container(
         width: containerWidth,
         decoration: BoxDecoration(
@@ -154,8 +169,8 @@ class RecipeCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: NumbersConstants.paddingXXSmall,
-                      top: NumbersConstants.paddingXSmall,
+                      left: NumbersConstants.paddingXXXSmall,
+                      top: NumbersConstants.paddingXXSmall,
                     ),
                     child: ColoredBox(
                       color: Colors.white,
@@ -173,8 +188,8 @@ class RecipeCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                top: NumbersConstants.paddingXSmall,
-                right: NumbersConstants.paddingXSmall,
+                top: NumbersConstants.paddingXXSmall,
+                right: NumbersConstants.paddingXXSmall,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -187,8 +202,8 @@ class RecipeCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      left: NumbersConstants.paddingXXSmall,
-                      top: NumbersConstants.paddingXSmall,
+                      left: NumbersConstants.paddingXXXSmall,
+                      top: NumbersConstants.paddingXXSmall,
                     ),
                     child: Text(
                       '${recipe.readyInMinutes} $textReadyInMinutes',
@@ -204,8 +219,8 @@ class RecipeCard extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(
-                left: NumbersConstants.paddingXXSmall,
-                top: NumbersConstants.paddingXSmall,
+                left: NumbersConstants.paddingXXXSmall,
+                top: NumbersConstants.paddingXXSmall,
               ),
               child: Text(
                 textSummary,
@@ -218,9 +233,9 @@ class RecipeCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                left: NumbersConstants.paddingXXSmall,
-                top: NumbersConstants.paddingXSmall,
-                right: NumbersConstants.paddingXSmall,
+                left: NumbersConstants.paddingXXXSmall,
+                top: NumbersConstants.paddingXXSmall,
+                right: NumbersConstants.paddingXXSmall,
               ),
               child: SizedBox(
                 height: sizeBoxHeightTextSummary,
@@ -233,8 +248,8 @@ class RecipeCard extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(
-                left: NumbersConstants.paddingXXSmall,
-                top: NumbersConstants.paddingXSmall,
+                left: NumbersConstants.paddingXXXSmall,
+                top: NumbersConstants.paddingXXSmall,
               ),
               child: Text(
                 textTags,
@@ -247,10 +262,10 @@ class RecipeCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                left: NumbersConstants.paddingXXSmall,
-                top: NumbersConstants.paddingXSmall,
-                right: NumbersConstants.paddingXSmall,
-                bottom: NumbersConstants.paddingXXSmall,
+                left: NumbersConstants.paddingXXXSmall,
+                top: NumbersConstants.paddingXXSmall,
+                right: NumbersConstants.paddingXXSmall,
+                bottom: NumbersConstants.paddingXXXSmall,
               ),
               child: SizedBox(
                 height: sizeBoxHeightTextsTags,

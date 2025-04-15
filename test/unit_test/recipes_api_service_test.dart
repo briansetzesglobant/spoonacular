@@ -6,7 +6,7 @@ import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:spoonacular/src/data/datasource/remote/recipes_api_service.dart';
-import 'package:spoonacular/src/data/model/recipes_list_model.dart';
+import 'package:spoonacular/src/data/model/recipes/recipes_list_model.dart';
 import '../utils/mock_data.dart';
 import 'recipes_api_service_test.mocks.dart';
 
